@@ -1,6 +1,7 @@
 version: '3'
 services:
   go-search:
+    restart: on-failure:5
     build:
       context: .
       dockerfile: Dockerfile
