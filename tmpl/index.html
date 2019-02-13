@@ -1,0 +1,30 @@
+<head>
+    <title>Simple search</title>
+    <link href="static/css/style.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+    <h2>{{.PageTitle}}</h2>
+
+    <div class="search">
+        <form action="/" method="post">
+            <p>kubernetes is the default word in this prototype.<br/>You need at least 3 chars (max: 30 chars) to search.</p>
+            <input class="searchTerm" type="text" name="value" value="{{.Keyword}}" placeholder="More than 3 chars to search">
+            <select name="nb">
+                <option value="{{.Nb}}">Your pick is {{.Nb}}</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
+            <button>Search</button>
+        </form>
+    </div>
+
+    <div class="keywordBox">You are looking for {{.Keyword}}</div>
+
+    <ul>
+        {{range $index,$value := .Links}}
+            <li class="done"><a href="{{$value.Link}}" target="_blank">{{$value.Title}}</a></li>
+        {{end}}
+    </ul>
+    <div class="footer">Jérémie Payet @2019</div>
+</body>
